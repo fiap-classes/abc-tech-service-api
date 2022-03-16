@@ -2,7 +2,9 @@ package br.com.fiap.abctechservice.controller;
 
 
 import br.com.fiap.abctechservice.model.Assistance;
+import br.com.fiap.abctechservice.model.Order;
 import br.com.fiap.abctechservice.service.AssistanceService;
+import br.com.fiap.abctechservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,8 @@ public class AssistanceController {
     private final AssistanceService assistanceService;
     public AssistanceController (
             @Autowired
-            AssistanceService assistanceService
+            AssistanceService assistanceService,
+            @Autowired OrderService orderService
     ){
         this.assistanceService = assistanceService;
     }
@@ -26,6 +29,7 @@ public class AssistanceController {
     @GetMapping()
     public ResponseEntity<List<Assistance>> getAssists() {
         List<Assistance> list = this.assistanceService.getAssistsList();
+
         return ResponseEntity.ok(list);
     }
 }
