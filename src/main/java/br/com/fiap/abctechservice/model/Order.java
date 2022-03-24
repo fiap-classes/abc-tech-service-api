@@ -55,6 +55,6 @@ public class Order {
     }
 
     public boolean exceedsMaxAssists () {
-        return services.size() > 50;
+        return services.size() > 15;
     }
 }
