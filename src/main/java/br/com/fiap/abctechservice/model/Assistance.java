@@ -28,4 +28,5 @@ public class Assistance {
     @Column(name = "description", nullable = false, length = 300)
     private String description;
 
+
 }
