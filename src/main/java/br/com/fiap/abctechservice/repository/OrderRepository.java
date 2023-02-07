@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-
-//    @Query('')
-//    public List<Order> findByOperatorId(Long id);
+    public List<Order> findByOperatorId(Long id);
 }

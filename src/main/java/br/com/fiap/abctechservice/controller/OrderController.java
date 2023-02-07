@@ -2,14 +2,13 @@ package br.com.fiap.abctechservice.controller;
 
 import br.com.fiap.abctechservice.application.OrderApplication;
 import br.com.fiap.abctechservice.application.dto.OrderDto;
+import br.com.fiap.abctechservice.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -30,6 +29,10 @@ public class OrderController {
     ){
         orderApplication.createOrder(orderDto);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/operator/{operatorId}")
+    public ResponseEntity<List<Order>> getOrderByOperator(@PathVariable("operatorId") Long operatorId){
+        return ResponseEntity.ok(orderApplication.getOrdersByOperator(operatorId));
     }
 
 }

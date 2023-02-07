@@ -9,6 +9,8 @@ import br.com.fiap.abctechservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class OrderApplicationImpl implements OrderApplication {
 
@@ -28,7 +30,10 @@ public class OrderApplicationImpl implements OrderApplication {
 
         this.orderService.saveOrder(order, orderDto.getServices());
     }
-
+    @Override
+    public List<Order> getOrdersByOperator(Long operatorId){
+        return orderService.listOrdersByOperator(operatorId);
+    }
 
     private OrderLocation getOrderLocationFromOrderLocationDto(OrderLocationDto orderLocationDto) {
         OrderLocation location = new OrderLocation();
